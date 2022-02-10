@@ -1,12 +1,5 @@
 export async function handler(event) {
-  const res = event.path.split('/')[1]
-
-  if (!res) {
-    return {
-      statusCode: 200,
-      body: 'OK!'
-    }
-  }
+  const [, res = '404'] = event.path.split('/')
 
   return {
     statusCode: 302,
@@ -15,3 +8,4 @@ export async function handler(event) {
     }
   }
 }
+
