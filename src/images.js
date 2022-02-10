@@ -15,4 +15,4 @@ for (const file of files) {
 const getImageByName = (name) => cache.get(name)
 
 exports.getImageByName = getImageByName
-exports.images = [...cache.keys()]
+exports.images = [...cache.keys()].filter(i => i !== '404')
