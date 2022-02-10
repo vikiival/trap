@@ -19,7 +19,7 @@ app.get('/:img', (req, res) => {
     return res.sendFile(image)
   }
   
-  res.send().end()
+  res.status(404).sendFile(getImageByName('404'))
 })
 
 app.listen(process.env.PORT, () => {
