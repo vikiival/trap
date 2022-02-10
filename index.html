@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trap</title>
+  <style>
+    * { font-family: Arial, Helvetica, sans-serif; }
+
+    :root { --accent: #FFC107; }
+
+    html, body { background-color: #212121; }
+
+    main {
+      max-width: 1200px;
+      width: 100%;
+      margin: auto;
+    }
+
+    header { padding: 32px; }
+
+    header h1 {
+      font-size: 4rem;
+      color: white;
+      font-weight: 100;
+    }
+
+    header p {
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      font-size: 1.5rem;
+      font-family: monospace !important;
+      color: white;
+    }
+
+    header p span {
+      font-family: monospace;
+      color: var(--accent);
+    }
+
+    section {
+      padding: 32px;
+      display: grid;
+      gap: 32px;
+      grid-template-columns: auto auto auto;
+    }
+
+    section a {
+      display: block;
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    section a span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      padding: 24px;
+      background-color: rgba(0, 0, 0, 0.8);
+      text-transform: uppercase;
+      font-weight: thin;
+      color: white;
+      font-size: 2rem;
+      font-family: monospace;
+      letter-spacing: 2px;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      opacity: 0;
+
+      transition: opacity 0.15s;
+    }
+
+    section a:hover span {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <script type="module">
+    import { createApp } from 'https://unpkg.com/petite-vue?module'
+
+    createApp({
+      cards: [],
+      async mounted() {
+        const response = await fetch('https://api.github.com/repos/vikiival/trap/contents/src/images?ref=master')
+        const json = await response.json()
+
+        this.cards = json.map((file) => ({ 
+          name: file?.name?.split('.')[0] || 'Error', 
+          url: file?.download_url || 'https://http.cat/418' 
+        }))
+      }
+    }).mount()
+  </script>
+  
+  <main @vue:mounted="mounted">
+    <header>
+      <h1>Trapcards</h1>
+      <p>https://example.url/<span>[trapcard name]</span></p>
+    </header>
+    <section>
+      <a v-for="card in cards" :href="card.url" target="_blank">
+        <img width="100%" :src="card.url" :alt="card.name">
+        <span>{{ card.name }}</span>
+      </a>
+    </div>
+  </main>
+</body>
+</html>
