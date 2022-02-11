@@ -102,6 +102,25 @@
       html { font-size: 100% }
       section { grid-template-columns: repeat(3, auto); }
     }
+    
+    footer {
+      padding-bottom: 16px;
+    }
+
+    footer p {
+      text-align: center;
+      font-size: 1rem;
+      color: white;
+      font-weight: 100;
+    }
+
+    footer p img.emoji{
+      vertical-align: middle;
+    }
+
+    footer a {
+      color: var(--accent);
+    }
   </style>
 </head>
 <body>
@@ -133,6 +152,12 @@
         <span>{{ card.name }}</span>
       </a>
     </section>
+    <footer>
+      <p>
+        <a href="https://github.com/vikiival/trap" target="_blank" rel="noopener noreferrer">Made with</a>
+        <img class="emoji" alt="heart" height="20" width="20" src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png" />
+      </p>
+    </footer>
   </main>
 </body>
 </html>
