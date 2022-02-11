@@ -111,7 +111,7 @@
     createApp({
       cards: [],
       async mounted() {
-        const response = await fetch('https://api.github.com/repos/vikiival/trap/contents/src/images?ref=master')
+        const response = await fetch('https://api.github.com/repos/vikiival/trap/contents/images?ref=master')
         const json = await response.json()
 
         this.cards = json.map((file) => ({ 
