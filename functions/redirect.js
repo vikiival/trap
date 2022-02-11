@@ -4,7 +4,7 @@ export async function handler(event) {
   return {
     statusCode: 302,
     headers: {
-      Location: `https://raw.githubusercontent.com/vikiival/trap/master/src/images/${res || '404'}.png`,
+      Location: `https://raw.githubusercontent.com/vikiival/trap/master/images/${res || '404'}.png`,
     }
   }
 }
