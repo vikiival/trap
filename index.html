@@ -30,6 +30,13 @@
         margin: auto;
       }
 
+      main h3 {
+        padding: 16px 48px;
+        font-weight: lighter;
+        font-family: monospace;
+        color: white;
+      }
+
       header {
         padding: 32px;
         padding-bottom: 0;
@@ -57,18 +64,31 @@
       }
 
       section {
+        opacity: 1;
         padding: 32px;
         display: grid;
         gap: 32px;
-        grid-template-columns: repeat(1, auto);
+        grid-template-columns: repeat(1, 1fr);
+        transition: opacity 0.5s;
       }
 
       section a {
         display: block;
         position: relative;
         border-radius: 8px;
+        opacity: 0;
         overflow: hidden;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+
+        transition: opacity 0.3s;
+      }
+
+      section a.visible {
+        opacity: 1;
+      }
+
+      section a img {
+        width: 100%;
       }
 
       section a span {
@@ -99,7 +119,7 @@
 
       @media (min-width: 600px) {
         section {
-          grid-template-columns: repeat(2, auto);
+          grid-template-columns: repeat(2, 1fr);
         }
       }
 
@@ -108,7 +128,7 @@
           font-size: 100%;
         }
         section {
-          grid-template-columns: repeat(3, auto);
+          grid-template-columns: repeat(3, 1fr);
         }
       }
 
@@ -134,35 +154,64 @@
   </head>
   <body>
     <script type="module">
-      import { createApp } from 'https://unpkg.com/petite-vue?module'
+      // Async Card "component" which will resolve its parent a element
+      // after the image loads
+      const Card = (props) => new Promise((resolve, reject) => {
+        const a = document.createElement('a')
+        a.href = props.url
+        a.target = '_blank'
 
-      createApp({
-        cards: [],
-        async mounted() {
-          const response = await fetch(
-            'https://api.github.com/repos/vikiival/trap/contents/images?ref=master'
-          )
-          const json = await response.json()
+        const img = document.createElement('img')
+        img.src = props.url
+        img.alt = props.url
 
-          this.cards = json.map((file) => ({
-            name: file?.name?.split('.')[0] || 'Error',
-            url: file?.download_url || 'https://http.cat/418',
-          }))
-        },
-      }).mount()
+        const span = document.createElement('span')
+        span.textContent = props.name
+
+        a.appendChild(img)
+        a.appendChild(span)
+
+        img.onload = () => resolve(a)
+        img.onerror = () => resolve(a)
+      })
+
+      window.onload = async () => {
+        const response = await fetch(
+          'https://api.github.com/repos/vikiival/trap/contents/images?ref=master'
+        )
+        const json = await response.json()
+
+        const images = json.map((file) => ({
+          name: file?.name?.split('.')[0] || 'Error',
+          url: file?.download_url || 'https://http.cat/418',
+        }))
+
+        const section = document.querySelector('section')
+
+        for (const img of images) {
+          const card = await Card(img)
+          section.appendChild(card)
+
+          // https://stackoverflow.com/a/39451131
+          await new Promise(r => {
+            setTimeout(() => {
+              card.classList.add('visible')
+              r()
+            }, 0)
+          })
+
+          // Simulate a very small delay
+          await new Promise(r => setTimeout(r, 100))
+        }
+      }
     </script>
 
-    <main @vue:mounted="mounted">
+    <main>
       <header>
         <h1>Trapcards</h1>
         <p>https://trap.ltd/<span>[trapcard name]</span></p>
       </header>
-      <section>
-        <a v-for="card in cards" :href="card.url" target="_blank">
-          <img width="100%" :src="card.url" :alt="card.name" />
-          <span>{{ card.name }}</span>
-        </a>
-      </section>
+      <section></section>
       <footer>
         <p>
           <a
