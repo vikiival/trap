@@ -159,6 +159,7 @@
       const Card = (props) => new Promise((resolve, reject) => {
         const a = document.createElement('a')
         a.href = props.url
+        a.target = '_blank'
 
         const img = document.createElement('img')
         img.src = props.url
