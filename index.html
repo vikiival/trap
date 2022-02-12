@@ -72,7 +72,7 @@
         transition: opacity 0.5s;
       }
 
-      section a {
+      article {
         display: block;
         position: relative;
         border-radius: 8px;
@@ -83,37 +83,48 @@
         transition: opacity 0.3s;
       }
 
-      section a.visible {
+      article.visible {
         opacity: 1;
       }
 
-      section a img {
+      article img {
         width: 100%;
       }
 
-      section a span {
+      article button {
+        border: none;
+        appearance: none;
+        cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
         position: absolute;
         padding: 24px;
-        background-color: rgba(0, 0, 0, 0.8);
+        background-color: rgba(0, 0, 0, 0.85);
         text-transform: uppercase;
         font-weight: thin;
-        color: white;
-        font-size: 2rem;
+        font-size: 1.75rem;
         font-family: monospace;
         letter-spacing: 2px;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
+        inset: 0;
         opacity: 0;
 
         transition: opacity 0.15s;
       }
 
-      section a:hover span {
+      article button.normal {
+        color: var(--accent);
+      }
+
+      article button.success {
+        color: green
+      }
+
+      article button.error {
+        color: red
+      }
+
+      article:hover button {
         opacity: 1;
       }
 
@@ -157,22 +168,35 @@
       // Async Card "component" which will resolve its parent a element
       // after the image loads
       const Card = (props) => new Promise((resolve, reject) => {
-        const a = document.createElement('a')
-        a.href = props.url
-        a.target = '_blank'
+        const article = document.createElement('article')
 
         const img = document.createElement('img')
         img.src = props.url
         img.alt = props.url
 
-        const span = document.createElement('span')
-        span.textContent = props.name
+        const btn = document.createElement('button')
+        const setState = (state) => {
+          btn.textContent = ({
+            normal: '🔗 ' + props.name,
+            success: '✅ Link copied',
+            error: '❌ Error',
+          })[state]
+          btn.className = state
+        }
+        setState('normal')
 
-        a.appendChild(img)
-        a.appendChild(span)
+        btn.onclick = () => {
+          navigator.clipboard.writeText('https://trap.ltd/' + props.name)
+            .then(() => setState('success'))
+            .catch(() => setState('error'))
+            .finally(() => setTimeout(() => setState('normal'), 1000))
+        }
 
-        img.onload = () => resolve(a)
-        img.onerror = () => resolve(a)
+        article.appendChild(img)
+        article.appendChild(btn)
+
+        img.onload = () => resolve(article)
+        img.onerror = () => resolve(article)
       })
 
       window.onload = async () => {
