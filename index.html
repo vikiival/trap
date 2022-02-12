@@ -189,9 +189,6 @@
 
         for (const img of images) {
           const card = await Card(img)
-
-          // Simulate a very small delay
-          await new Promise(r => setTimeout(r, 100))
           section.appendChild(card)
 
           // https://stackoverflow.com/a/39451131
@@ -201,6 +198,9 @@
               r()
             }, 0)
           })
+
+          // Simulate a very small delay
+          await new Promise(r => setTimeout(r, 100))
         }
       }
     </script>
