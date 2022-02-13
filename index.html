@@ -89,6 +89,7 @@
 
       article img {
         width: 100%;
+        height: 100%;
       }
 
       article button {
@@ -181,21 +182,31 @@
         img.alt = props.name
 
         const btn = document.createElement('button')
-        const setState = (state) => {
-          btn.textContent = ({
-            normal: '🔗 ' + props.name,
-            success: '✅ Link copied',
-            error: '❌ Error',
-          })[state]
-          btn.className = state
+        const setState = (state, delay) => {
+          const _set = () => {
+            btn.textContent = ({
+              normal: '🔗 ' + props.name,
+              success: '✅ Link copied',
+              error: '❌ Error',
+            })[state]
+            btn.className = state
+          }
+
+          delay ? setTimeout(_set, delay) : _set()
         }
         setState('normal')
 
         btn.onclick = () => {
-          navigator.clipboard.writeText('https://trap.ltd/' + props.name)
+          if (!navigator?.clipboard?.writeText) {
+            setState('error')
+            setState('normal', 1000)
+            return
+          }
+
+          navigator?.clipboard?.writeText('https://trap.ltd/' + props.name)
             .then(() => setState('success'))
             .catch(() => setState('error'))
-            .finally(() => setTimeout(() => setState('normal'), 1000))
+            .finally(() => setState('normal', 1000))
         }
 
         article.appendChild(img)
