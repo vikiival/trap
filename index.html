@@ -191,7 +191,7 @@
         setState('normal')
 
         btn.onclick = () => {
-          // On Safari, under certain conditions (probably becasue of the missing HTTPs)
+          // On Safari, under certain conditions (probably because of the missing HTTPs)
           // the navigator.clipboard is undefined. Not the big issue tho, since this
           // is probably happening only with dev server
           if (!navigator?.clipboard?.writeText) {
