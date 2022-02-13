@@ -106,8 +106,10 @@
         font-size: 1.75rem;
         font-family: monospace;
         letter-spacing: 2px;
-        inset: 0;
-        opacity: 0;
+        opacity: 1;
+        bottom: 0;
+        left: 0;
+        right: 0;
 
         transition: opacity 0.15s;
       }
@@ -140,6 +142,10 @@
         }
         section {
           grid-template-columns: repeat(3, 1fr);
+        }
+        article button {
+          inset: 0;
+          opacity: 0;
         }
       }
 
