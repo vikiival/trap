@@ -130,18 +130,6 @@
         transition: opacity 0.15s;
       }
 
-      article button.normal {
-        color: var(--accent);
-      }
-
-      article button.success {
-        color: green
-      }
-
-      article button.error {
-        color: red
-      }
-
       article:hover button {
         opacity: 1;
       }
@@ -187,24 +175,15 @@
   </head>
   <body>
     <script type="module">
-      // Async Card "component" which will resolve its parent a element
-      // after the image loads
-      const Card = (props) => new Promise((resolve, reject) => {
-        const article = document.createElement('article')
-
-        const img = document.createElement('img')
-        img.src = props.url
-        img.alt = props.name
-
+      const CopyButton = (props) => {
         const btn = document.createElement('button')
         const setState = (state, delay) => {
           const _set = () => {
-            btn.textContent = ({
-              normal: '🔗 ' + props.name,
-              success: '✅ Link copied',
-              error: '❌ Error',
+            [btn.textContent, btn.style.color] = ({
+              normal: ['🔗 ' + props.name, 'var(--accent)'],
+              success: ['✅ Link copied', 'green'],
+              error: ['❌ Error', 'red'],
             })[state]
-            btn.className = state
           }
 
           delay ? setTimeout(_set, delay) : _set()
@@ -226,6 +205,20 @@
             .catch(() => setState('error'))
             .finally(() => setState('normal', 1000))
         }
+
+        return btn
+      }
+
+      // Async Card "component" which will resolve its parent a element
+      // after the image loads
+      const Card = (props) => new Promise((resolve, reject) => {
+        const article = document.createElement('article')
+
+        const img = document.createElement('img')
+        img.src = props.url
+        img.alt = props.name
+
+        const btn = CopyButton({ name: props.name })
 
         article.appendChild(img)
         article.appendChild(btn)
