@@ -177,17 +177,24 @@
     <script type="module">
       const CopyButton = (props) => {
         const btn = document.createElement('button')
+        const states = {
+          normal: ['🔗 ' + props.name, 'var(--accent)'],
+          success: ['✅ Link copied', 'green'],
+          error: ['❌ Error', 'red'],
+        }
+
         const setState = (state, delay) => {
+          if (!(state in states)) {
+            state = 'normal'
+          }
+
           const _set = () => {
-            [btn.textContent, btn.style.color] = ({
-              normal: ['🔗 ' + props.name, 'var(--accent)'],
-              success: ['✅ Link copied', 'green'],
-              error: ['❌ Error', 'red'],
-            })[state]
+            [btn.textContent, btn.style.color] = states[state]
           }
 
           delay ? setTimeout(_set, delay) : _set()
         }
+        
         setState('normal')
 
         btn.onclick = () => {
