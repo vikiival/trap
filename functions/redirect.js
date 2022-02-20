@@ -22,7 +22,7 @@ export async function handler(event) {
   return {
     statusCode: 302,
     headers: {
-      Location: `https://raw.githubusercontent.com/vikiival/trap/master/images/${name}.png`,
+      Location: `/images/${name}.png`,
     }
   }
 }
