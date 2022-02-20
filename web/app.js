@@ -65,7 +65,7 @@ window.onload = async () => {
 
   const images = json.map((file) => ({
     name: file?.name?.split('.')[0] || 'Error',
-    url: file?.download_url || 'https://http.cat/418',
+    url: file?.name ? `/images/${file?.name}` : 'https://http.cat/418',
   }))
 
   const section = document.querySelector('section')
