@@ -7,7 +7,17 @@
 
 [[redirects]]
   from = "/"
-  to = "/index.html"
+  to = "/web/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/style.css"
+  to = "/web/style.css"
+  status = 200
+
+[[redirects]]
+  from = "/app.js"
+  to = "/web/app.js"
   status = 200
 
 [[redirects]]
