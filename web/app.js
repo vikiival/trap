@@ -83,6 +83,6 @@ window.onload = async () => {
     })
 
     // Simulate a very small delay
-    await new Promise(r => setTimeout(r, 75))
+    await new Promise(r => setTimeout(r, 35))
   }
 }
