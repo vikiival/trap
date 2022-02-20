@@ -16,6 +16,11 @@
   status = 200
 
 [[redirects]]
+  from = "/manifest.json"
+  to = "/web/manifest.json"
+  status = 200
+
+[[redirects]]
   from = "/app.js"
   to = "/web/app.js"
   status = 200
