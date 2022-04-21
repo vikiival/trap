@@ -1,3 +1,4 @@
+/* Main container */
 * {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -22,25 +23,19 @@ main {
   margin: auto;
 }
 
-main h3 {
-  padding: 16px 48px;
-  font-weight: lighter;
-  font-family: monospace;
-  color: white;
-}
-
+/* Header */
 header {
   padding: 32px;
   padding-bottom: 0;
 }
 
-header h1 {
+.title {
   font-size: 4rem;
   color: white;
   font-weight: 100;
 }
 
-header p {
+.link-preview {
   background-color: rgba(255, 255, 255, 0.05);
   padding: 20px;
   font-size: 1.5rem;
@@ -49,11 +44,12 @@ header p {
   overflow-y: auto;
 }
 
-header p span {
+.link-preview span {
   font-family: monospace;
   color: var(--accent);
 }
 
+/* Cards and cards container */
 section {
   opacity: 1;
   padding: 32px;
@@ -63,7 +59,7 @@ section {
   transition: opacity 0.5s;
 }
 
-article {
+.card {
   display: block;
   position: relative;
   z-index: 0;
@@ -77,16 +73,16 @@ article {
   transition: opacity 0.75s;
 }
 
-article.visible {
+.card.visible {
   opacity: 1;
 }
 
-article img {
+.card-image {
   width: 100%;
   height: 100%;
 }
 
-article button {
+.card-copy-button {
   border: none;
   appearance: none;
   cursor: pointer;
@@ -107,43 +103,45 @@ article button {
   transition: opacity 0.15s;
 }
 
-article:hover button {
+.card:hover .card-copy-button {
   opacity: 1;
 }
 
+/* Footer */
 footer {
-  padding-bottom: 16px;
+  padding-bottom: 24px;
 }
 
-footer p {
+.footer-text {
   text-align: center;
   font-size: 1rem;
   color: white;
   font-weight: 100;
 }
 
-footer p img.emoji {
+.footer-emoji {
   vertical-align: middle;
 }
 
-footer a {
+.footer-link {
   color: var(--accent);
 }
 
+/* Media queries */
 @media (min-width: 600px) {
   section {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (min-width: 1100px) {
+@media (min-width: 900px) {
   html {
     font-size: 100%;
   }
   section {
     grid-template-columns: repeat(3, 1fr);
   }
-  article button {
+  .card-copy-button {
     inset: 0;
     opacity: 0;
   }

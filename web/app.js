@@ -1,5 +1,7 @@
 const CopyButton = (props) => {
   const btn = document.createElement('button')
+  btn.classList.add('card-copy-button')
+
   const states = {
     normal: ['🔗 ' + props.name, 'var(--accent)'],
     success: ['✅ Link copied', 'green'],
@@ -43,8 +45,10 @@ const CopyButton = (props) => {
 // after the image loads
 const Card = (props) => new Promise((resolve, reject) => {
   const article = document.createElement('article')
-
+  article.classList.add('card')
+  
   const img = document.createElement('img')
+  img.classList.add('card-image')
   img.src = props.url
   img.alt = props.name
 
