@@ -66,15 +66,8 @@ section {
   border-radius: 8px;
   display: flex;
   flex-direction: column-reverse;
-  opacity: 0;
   overflow: hidden;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-
-  transition: opacity 0.75s;
-}
-
-.card.visible {
-  opacity: 1;
 }
 
 .card-image {
