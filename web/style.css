@@ -18,7 +18,7 @@ html {
 }
 
 main {
-  max-width: 1200px;
+  max-width: 1000px;
   width: 100%;
   margin: auto;
 }
@@ -135,7 +135,8 @@ footer {
     grid-template-columns: repeat(3, 1fr);
   }
   .card-copy-button {
-    inset: 0;
+    width: 100%;
+    height: 100%;
     opacity: 0;
   }
 }
