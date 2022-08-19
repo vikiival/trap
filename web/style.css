@@ -41,12 +41,14 @@ header {
   font-size: 1.5rem;
   font-family: monospace !important;
   color: white;
-  overflow-y: auto;
+  white-space: nowrap;
+  overflow-x: auto;
 }
 
 .link-preview span {
   font-family: monospace;
   color: var(--accent);
+  overflow-x: auto;
 }
 
 /* Cards and cards container */
@@ -178,6 +180,9 @@ footer {
   }
   section {
     grid-template-columns: repeat(3, 1fr);
+  }
+  .link-preview {
+    font-size: 1.25rem;
   }
   .card-copy-button {
     width: 100%;
