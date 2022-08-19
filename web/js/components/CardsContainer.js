@@ -2,7 +2,7 @@ import Card from './Card.js'
 
 export default async function CardsContainer() {
   const response = await fetch(
-  'https://api.github.com/repos/vikiival/trap/contents/images?ref=master'
+    'https://api.github.com/repos/vikiival/trap/contents/images?ref=master'
   )
   const json = await response.json()
 
