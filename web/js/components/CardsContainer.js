@@ -7,8 +7,8 @@ export default async function CardsContainer() {
   const json = await response.json()
 
   const images = json.map((file) => ({
-    name: file?.name?.split('.')[0] || 'Error',
-    url: file?.name ? `/images/${file?.name}` : 'https://http.cat/418',
+    name: file?.name?.split('.')[0] ?? 'Error',
+    url: file?.name ? `/images/${file.name}` : 'https://http.cat/418',
   }))
 
   const section = document.createElement('section')
