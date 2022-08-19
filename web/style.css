@@ -59,6 +59,10 @@ section {
   transition: opacity 0.5s;
 }
 
+section.compact {
+  gap: 10px;
+}
+
 .card {
   display: block;
   position: relative;
@@ -98,6 +102,47 @@ section {
 
 .card:hover .card-copy-button {
   opacity: 1;
+}
+
+.card.compact .card-copy-button {
+  opacity: 1;
+  position: static;
+  justify-content: start;
+  background-color: transparent;
+  padding: 16px;
+}
+
+.card.compact {
+  box-shadow: none;
+  border: 2px solid rgba(255, 255, 255, 0.05);
+}
+
+/* CompactModeSwitch */
+.switch-container {
+  display: inline-flex;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.switch-button {
+  color: white;
+  cursor: pointer;
+  font-size: 1.25;
+  padding: 12px 24px;
+  background-color: transparent;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.switch-button:not(.active):hover {
+  color: var(--accent);
+}
+
+.switch-button.active {
+  background-color: var(--accent);
+  color: #212121;
 }
 
 /* Footer */

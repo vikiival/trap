@@ -1,4 +1,6 @@
-export default function Header() {
+import CompactModeSwitcher from './CompactModeSwitcher.js'
+
+export default function Header({ compactMode }) {
   const header = document.createElement('header')
 
   const heading = document.createElement('h1')
@@ -11,6 +13,7 @@ export default function Header() {
 
   header.appendChild(heading)
   header.appendChild(previewLabel)
+  header.appendChild(CompactModeSwitcher({ compactMode }))
 
   return header
 }
