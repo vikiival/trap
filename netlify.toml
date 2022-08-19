@@ -26,8 +26,8 @@
   status = 200
 
 [[redirects]]
-  from = "/app.js"
-  to = "/web/app.js"
+  from = "/js/*"
+  to = "/web/js/:splat"
   status = 200
 
 [[redirects]]
