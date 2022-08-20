@@ -128,10 +128,9 @@ section.compact {
 .switch-button {
   color: white;
   cursor: pointer;
-  font-size: 1.25;
+  font-size: 1.5rem !important;
   padding: 12px 24px;
   background-color: transparent;
-  font-weight: bold;
   text-transform: uppercase;
   border: none;
   appearance: none;
@@ -165,6 +164,7 @@ footer {
 
 .footer-link {
   color: var(--accent);
+  font-family: monospace;
 }
 
 /* Media queries */
