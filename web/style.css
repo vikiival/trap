@@ -41,12 +41,14 @@ header {
   font-size: 1.5rem;
   font-family: monospace !important;
   color: white;
-  overflow-y: auto;
+  white-space: nowrap;
+  overflow-x: auto;
 }
 
 .link-preview span {
   font-family: monospace;
   color: var(--accent);
+  overflow-x: auto;
 }
 
 /* Cards and cards container */
@@ -57,6 +59,10 @@ section {
   gap: 32px;
   grid-template-columns: repeat(1, 1fr);
   transition: opacity 0.5s;
+}
+
+section.compact {
+  gap: 10px;
 }
 
 .card {
@@ -100,6 +106,46 @@ section {
   opacity: 1;
 }
 
+.card.compact .card-copy-button {
+  opacity: 1;
+  position: static;
+  justify-content: start;
+  background-color: transparent;
+  padding: 16px;
+}
+
+.card.compact {
+  box-shadow: none;
+  border: 2px solid rgba(255, 255, 255, 0.05);
+}
+
+/* CompactModeSwitch */
+.switch-container {
+  display: inline-flex;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.switch-button {
+  color: white;
+  cursor: pointer;
+  font-size: 1.5rem !important;
+  padding: 12px 24px;
+  background-color: transparent;
+  text-transform: uppercase;
+  border: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.switch-button:not(.active):hover {
+  color: var(--accent);
+}
+
+.switch-button.active {
+  background-color: var(--accent);
+  color: #212121;
+}
+
 /* Footer */
 footer {
   padding-bottom: 24px;
@@ -118,6 +164,7 @@ footer {
 
 .footer-link {
   color: var(--accent);
+  font-family: monospace;
 }
 
 /* Media queries */
@@ -133,6 +180,9 @@ footer {
   }
   section {
     grid-template-columns: repeat(3, 1fr);
+  }
+  .link-preview {
+    font-size: 1.25rem;
   }
   .card-copy-button {
     width: 100%;

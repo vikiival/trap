@@ -14,6 +14,7 @@ export default function Footer() {
   const heart = document.createElement('img')
   heart.classList.add('footer-emoji')
   heart.alt = 'heart'
+  heart.style.marginLeft = '8px'
   heart.height = heart.width = '20'
   heart.src = 'https://github.githubassets.com/images/icons/emoji/unicode/2764.png'
 
