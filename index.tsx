@@ -41,7 +41,7 @@ serve(async (request: Request) => {
           <div class="w-full p-7 md:w-3/4 2xl:w-3/5">
             <h1 class="text-white text-5xl sm:text-6xl mt-7 sm:mt-12">Trapcards</h1>
             <p class="text-white font-mono -mx-7 sm:mx-0 my-7 p-4 px-8 sm:px-4 bg-white/5 text-xl whitespace-nowrap overflow-x-auto">
-              <span>https://trap.vik.ink/</span><span class="text-yellow-500">[trapcard name]</span>
+              <span>https://{request.headers.get('host')}/</span><span class="text-yellow-500">[trapcard name]</span>
             </p>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
