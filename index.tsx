@@ -16,16 +16,16 @@ serve(async (request: Request) => {
       meta: {
         'og:title': 'Trap Limited',
         'og:type': 'website',
-        'og:url': 'https://trap.ltd',
-        'og:image': 'https://trap.ltd/well',
+        'og:url': 'https://trap.vik.ink',
+        'og:image': 'https://trap.vik.ink/well',
         'og:site_name': 'Trap Limited',
         'og:description': 'Metaverse trap doors',
         'description': 'Trap Limited is a Metaverse based company that specialises in the design, manufacture and installation of trap doors, trap doors and sliding doors.',
         'twitter:card': 'content="summary_large_image',
-        'twitter:site': 'content="https://trap.ltd',
+        'twitter:site': 'content="https://trap.vik.ink',
         'twitter:title': 'content="Trap Limited',
         'twitter:description': 'content="Trap Limited',
-        'twitter:image': 'content="https://trap.ltd/well',
+        'twitter:image': 'content="https://trap.vik.ink/well',
         'apple-mobile-web-app-capable': 'yes',
         'apple-mobile-web-app-status-bar-style': 'black-translucent',
         'theme-color': '#1B1917',
@@ -41,7 +41,7 @@ serve(async (request: Request) => {
           <div class="w-full p-7 md:w-3/4 2xl:w-3/5">
             <h1 class="text-white text-5xl sm:text-6xl mt-7 sm:mt-12">Trapcards</h1>
             <p class="text-white font-mono -mx-7 sm:mx-0 my-7 p-4 px-8 sm:px-4 bg-white/5 text-xl whitespace-nowrap overflow-x-auto">
-              <span>https://trap.ltd/</span><span class="text-yellow-500">[trapcard name]</span>
+              <span>https://trap.vik.ink/</span><span class="text-yellow-500">[trapcard name]</span>
             </p>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
