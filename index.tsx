@@ -2,6 +2,7 @@
 import { serve } from 'https://deno.land/std@0.155.0/http/server.ts'
 import { h, html } from 'https://deno.land/x/htm@0.0.10/mod.tsx'
 import { UnoCSS } from 'https://deno.land/x/htm@0.0.10/plugins.ts'
+import { META } from './meta.ts'
 
 // enable UnoCSS
 html.use(UnoCSS())
@@ -13,23 +14,7 @@ serve(async (request: Request) => {
   if (path === '/') {
     return html({
       title: 'TRAP',
-      meta: {
-        'og:title': 'Trap Limited',
-        'og:type': 'website',
-        'og:url': 'https://trap.vik.ink',
-        'og:image': 'https://trap.vik.ink/well',
-        'og:site_name': 'Trap Limited',
-        'og:description': 'Metaverse trap doors',
-        'description': 'Trap Limited is a Metaverse based company that specialises in the design, manufacture and installation of trap doors, trap doors and sliding doors.',
-        'twitter:card': 'content="summary_large_image',
-        'twitter:site': 'content="https://trap.vik.ink',
-        'twitter:title': 'content="Trap Limited',
-        'twitter:description': 'content="Trap Limited',
-        'twitter:image': 'content="https://trap.vik.ink/well',
-        'apple-mobile-web-app-capable': 'yes',
-        'apple-mobile-web-app-status-bar-style': 'black-translucent',
-        'theme-color': '#1B1917',
-      },
+      meta: META,
       styles: [
         'html, body { background-color: #1B1917; }'
       ],
