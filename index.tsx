@@ -35,7 +35,7 @@ serve(async (request: Request) => {
                   <img class="w-full" src={card.download_url} alt="" />
                   <button 
                     onclick={`copy('${card.name}')`}
-                    class="hover:opacity-100 opacity-0 absolute inset-0 bg-black/60 flex items-center justify-center">
+                    class="hover:opacity-100 opacity-0 absolute w-full inset-0 bg-black/60 flex items-center justify-center">
                     <span class="text-yellow-500 font-mono text-4xl">🔗 {card.name}</span>
                   </button>
                 </div>
